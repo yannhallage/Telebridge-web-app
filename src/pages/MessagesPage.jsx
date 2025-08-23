@@ -8,6 +8,7 @@ import { Input } from '../components/ui/input';
 
 import { Badge } from '../components/ui/badge';
 import { Contact } from 'lucide-react';
+
 import {
     MessageCircle,
     Search,
@@ -31,6 +32,7 @@ import {
 import { useToast } from '../components/ui/use-toast';
 import AlertComponent from '../components/comp-313';
 import OnboardingDialog from '../components/comp-332.jsx';
+import SearchDialogContact from '@/components/comp-333';
 
 
 function MessagesPage() {
@@ -150,7 +152,7 @@ function MessagesPage() {
                             >
                                 <Slack className="h-5 w-5 text-gray-600" />
                             </Button> */}
-                           
+
                             <Button
                                 variant="ghost"
                                 size="icon"
@@ -183,7 +185,9 @@ function MessagesPage() {
                 </div>
 
                 {/* Notifications */}
-                <div className="p-4 bg-blue-50 border-b border-gray-200 ">
+                <motion.div className="p-4 bg-blue-50 border-b border-gray-200 " initial={{ opacity: 0, y: 10 }}
+                    animate={{ opacity: 1, y: 0 }}
+                    transition={{ duration: 0.2 }}>
                     <div className="flex items-start space-x-3">
                         <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
                         <div className="flex-1">
@@ -260,7 +264,7 @@ function MessagesPage() {
                         </div>
                     </div>
 
-                </div>
+                </motion.div>
             </div>
 
             <div className="flex flex-col flex-1 max-h-screen overflow-y-auto ">
@@ -276,13 +280,8 @@ function MessagesPage() {
                             </span> */}
                         </h2>
                         <div className="flex items-center space-x-2">
-                            <Button
-                                variant="ghost"
-                                size="icon"
-                                onClick={() => handleFeatureClick('filter')}
-                            >
-                                <Contact className="h-4 w-4 text-gray-600" />
-                            </Button>
+
+                            <SearchDialogContact />
                             <Button
                                 variant="ghost"
                                 size="icon"
@@ -477,7 +476,7 @@ function MessagesPage() {
                                 />
                             </div>
                             <h2 className="text-2xl font-semibold text-gray-900 mb-4">
-                                    Telebridge App
+                                Telebridge App
                             </h2>
                             <p className="text-gray-600 mb-6">
                                 Sélectionnez une conversation pour commencer à discuter

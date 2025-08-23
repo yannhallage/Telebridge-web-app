@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+
 import { motion } from 'framer-motion';
 import { useNavigate } from 'react-router-dom';
 import { Card, CardContent, CardHeader, CardTitle } from '../components/ui/card';
@@ -9,6 +10,8 @@ import { Separator } from '../components/ui/separator';
 import { MessageCircle, Smartphone, Settings, Link, QrCode, Download, HelpCircle, MonitorSmartphone } from 'lucide-react';
 import { useToast } from '../components/ui/use-toast';
 import AccordionFromOrigin from '../components/comp-335';
+import OnboardingDialogForLogin from '@/components/pages/OnboardLogin';
+
 
 function LoginPage() {
     const navigate = useNavigate();
@@ -19,10 +22,10 @@ function LoginPage() {
         toast({
             title: "🚧 Cette fonctionnalité n'est pas encore implémentée—mais ne vous inquiétez pas ! Vous pouvez la demander dans votre prochaine requête ! 🚀"
         });
-        // Simulate login after 2 seconds
-        setTimeout(() => {
-            navigate('/messages');
-        }, 2000);
+        
+        // navigate('/messages');
+        // setTimeout(() => {
+        // }, 2000);
     };
 
     const handlePhoneLogin = () => {
@@ -38,9 +41,10 @@ function LoginPage() {
     };
 
     const handleGetStarted = () => {
-        toast({
-            title: "🚧 Cette fonctionnalité n'est pas encore implémentée—mais ne vous inquiétez pas ! Vous pouvez la demander dans votre prochaine requête ! 🚀"
-        });
+        navigate('/messages')
+        // toast({
+        //     title: "🚧 Cette fonctionnalité n'est pas encore implémentée—mais ne vous inquiétez pas ! Vous pouvez la demander dans votre prochaine requête ! 🚀"
+        // });
     };
 
     return (
@@ -127,13 +131,14 @@ function LoginPage() {
                                     Se connecter avec le numéro de téléphone à la place
                                 </Button> */}
                                 <div className="text-center space-x-2">
-                                    <Button
+                                    {/* <Button
                                         variant="outline"
                                         className="border-[#0067b8] w-full text-[#0067b8] hover:bg-green-50 hover:text-gray-600"
                                         onClick={handleGetStarted}
                                     >
                                         Commencer
-                                    </Button>
+                                    </Button> */}
+                                    <OnboardingDialogForLogin />
                                 </div>
                                 <div className="flex items-center space-x-2">
                                     <input

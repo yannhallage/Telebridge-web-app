@@ -7,6 +7,7 @@ import { Button } from '../components/ui/button';
 import { Input } from '../components/ui/input';
 
 import { Badge } from '../components/ui/badge';
+import { Contact } from 'lucide-react';
 import {
     MessageCircle,
     Search,
@@ -280,7 +281,7 @@ function MessagesPage() {
                                 size="icon"
                                 onClick={() => handleFeatureClick('filter')}
                             >
-                                <Filter className="h-4 w-4 text-gray-600" />
+                                <Contact className="h-4 w-4 text-gray-600" />
                             </Button>
                             <Button
                                 variant="ghost"

@@ -18,7 +18,7 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
-import { getContacts } from "@/services//contactsService";
+import { getContacts } from "@/services/contactsService";
 
 // import  { useEffect, useState } from "react";
 
@@ -28,17 +28,20 @@ export default function SearchDialogContact() {
   const [contactsData, setContactsData] = React.useState([]);
 
 
-  const contacts = [
-    { name: "T Gene", number: "0707880905" },
-    { name: "Yann H", number: "0102030405" },
-    { name: "Drexx", number: "0555444333" },
-    { name: "Aline", number: "0745123456" },
-  ]
+  // const contacts = [
+  //   { name: "T Gene", number: "0707880905" },
+  //   { name: "Yann H", number: "0102030405" },
+  //   { name: "Drexx", number: "0555444333" },
+  //   { name: "Aline", number: "0745123456" },
+  // ]
 
   React.useEffect(() => {
     const fetchContacts = async () => {
       const data = await getContacts();
-      setContactsData(data);
+      if (data){
+        setContactsData(data);
+        // console.log(data)
+      }
     };
     fetchContacts();
   }, []);
@@ -81,7 +84,7 @@ export default function SearchDialogContact() {
         <CommandList>
           <CommandEmpty>Aucun contact trouvé.</CommandEmpty>
           <CommandGroup heading="Contacts">
-            {contacts.map((contact, index) => (
+            {contactsData.map((contact, index) => (
               <CommandItem key={index} className="flex items-center gap-2">
                 <CircleDashed size={16} className="opacity-60" />
                 <div className="flex flex-col">

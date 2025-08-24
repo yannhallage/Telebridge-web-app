@@ -1,14 +1,17 @@
 // src/services/contactsService.js
-import { collection, getDocs, addDoc } from "firebase/firestore";
-import { db } from "@/config/firebaseConfig";
+import { ref, get, set } from "firebase/database";
+import { database } from "../config/firebaseConfig";
 
 // Récupérer tous les contacts
 export const getContacts = async () => {
-    const querySnapshot = await getDocs(collection(db, "contacts"));
-    return querySnapshot.docs.map(doc => ({ id: doc.id, ...doc.data() }));
+    const contactsRef = ref(database, "contacts");
+    const snapshot = await get(contactsRef);
+    return snapshot.exists() ? snapshot.val() : [];
 };
 
 // Ajouter un contact
 export const addContact = async (contact) => {
-    await addDoc(collection(db, "contacts"), contact);
+    // Ici on peut générer un ID aléatoire
+    const newRef = ref(database, `contacts/${Date.now()}`);
+    await set(newRef, contact);
 };

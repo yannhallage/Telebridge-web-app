@@ -18,9 +18,15 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
+import { getContacts } from "@/services//contactsService";
+
+// import  { useEffect, useState } from "react";
+
 
 export default function SearchDialogContact() {
   const [open, setOpen] = React.useState(false)
+  const [contactsData, setContactsData] = React.useState([]);
+
 
   const contacts = [
     { name: "T Gene", number: "0707880905" },
@@ -28,6 +34,14 @@ export default function SearchDialogContact() {
     { name: "Drexx", number: "0555444333" },
     { name: "Aline", number: "0745123456" },
   ]
+
+  React.useEffect(() => {
+    const fetchContacts = async () => {
+      const data = await getContacts();
+      setContactsData(data);
+    };
+    fetchContacts();
+  }, []);
 
   React.useEffect(() => {
     const down = (e) => {
@@ -40,6 +54,7 @@ export default function SearchDialogContact() {
     document.addEventListener("keydown", down)
     return () => document.removeEventListener("keydown", down);
   }, [])
+
 
   return (
     <>

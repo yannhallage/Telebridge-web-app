@@ -244,7 +244,7 @@ function LoginPage() {
                 </div>
             </div>
 
-            {/* Windows App Section */}
+            {/*  App Section */}
             <div className="bg-gray-50 py-12">
                 <div className="max-w-4xl mx-auto px-6">
                     <motion.div
@@ -255,11 +255,11 @@ function LoginPage() {
                         <Card className="p-8">
                             <div className="flex items-center space-x-6">
                                 <div className="flex-shrink-0">
-                                    <img alt="WhatsApp Windows app interface" className="w-32 h-24 rounded-lg" src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/MSFT-Phone-Link-window-with-notifications-RW10JU0?scl=1" />
+                                    <img alt="Telebridge App  app interface" className="w-32 h-24 rounded-lg" src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/MSFT-Phone-Link-window-with-notifications-RW10JU0?scl=1" />
                                 </div>
                                 <div className="flex-1">
                                     <h3 className="text-xl font-semibold text-gray-900 mb-2">
-                                        Essayez l'application Windows
+                                        Essayez l'application 
                                     </h3>
                                     <p className="text-gray-600 mb-4">
                                         Avec des fonctionnalités supplémentaires comme les appels vocaux et vidéo, vous pouvez envoyer des messages et appeler en même temps pour en faire plus.
@@ -295,9 +295,9 @@ function LoginPage() {
                                     <MessageCircle className="h-6 w-6 text-[#0067b8]" />
                                 </div>
                                 <div className="flex-1">
-                                    <h3 className="font-semibold text-gray-900">Vous n'avez pas de compte WhatsApp ?</h3>
+                                    <h3 className="font-semibold text-gray-900">Vous n'avez pas de compte Telebridge App ?</h3>
                                     <p className="text-sm text-gray-600">
-                                        Vous devez avoir WhatsApp sur votre téléphone avant de pouvoir vous connecter sur un ordinateur.
+                                        Vous devez avoir Telebridge App sur votre téléphone avant de pouvoir vous connecter sur un ordinateur.
                                     </p>
                                 </div>
                                 <Button

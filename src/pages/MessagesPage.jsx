@@ -7,7 +7,6 @@ import { Button } from '../components/ui/button';
 
 import { Input } from '../components/ui/input';
 
-
 import {
     MessageCircle,
     Search,
@@ -39,6 +38,7 @@ import RegistreCallComponent from '@/components/pages/RegistreCallComponent';
 import DiscussionsComponent from '@/components/pages/DiscussionsComponent';
 import CallComponent from '@/components/pages/CallComponent';
 import SelectChats from '@/components/pages/SelectChats';
+import NotificationComponent from '@/components/pages/notificationComponent';
 // import DiscussionsComponent from '@/components/pages/DiscussionsComponent';
 
 
@@ -219,86 +219,10 @@ function MessagesPage() {
                 </div>
 
                 {/* Notifications */}
-                <motion.div className="p-4 bg-blue-50 border-b border-gray-200 " initial={{ opacity: 0, y: 10 }}
-                    animate={{ opacity: 1, y: 0 }}
-                    transition={{ duration: 0.2 }}>
-                    <div className="flex items-start space-x-3">
-                        <div className="w-2 h-2 bg-blue-500 rounded-full mt-2"></div>
-                        <div className="flex-1">
-                            <p className="text-sm font-medium text-gray-900">Notifications</p>
-                            <p className="text-xs text-gray-600 mt-1">Effacer tout</p>
-                        </div>
-                    </div>
-
-                    <div className="mt-3 space-y-2 max-h-96 overflow-y-auto pr-2 scroll-hidden">
-                        <div className="bg-white p-3 rounded-lg shadow-sm">
-                            <div className="flex items-start space-x-3">
-                                <Avatar className="h-8 w-8">
-                                    <AvatarFallback className="bg-blue-100 text-blue-600 text-xs">
-                                        B
-                                    </AvatarFallback>
-                                </Avatar>
-                                <div className="flex-1">
-                                    <p className="text-xs font-medium text-gray-900">Bing</p>
-                                    <p className="text-xs text-gray-600 mt-1">
-                                        L'ONU déclare officiellement l'état de famine à Gaza, la première à toucher le Moyen-Orient
-                                    </p>
-                                    <p className="text-xs text-gray-400 mt-1">09:27</p>
-                                </div>
-                            </div>
-                        </div>
-
-                        <div className="bg-white p-3 rounded-lg shadow-sm">
-                            <div className="flex items-start space-x-3">
-                                <Avatar className="h-8 w-8">
-                                    <AvatarFallback className="bg-orange-100 text-orange-600 text-xs">
-                                        O
-                                    </AvatarFallback>
-                                </Avatar>
-                                <div className="flex-1">
-                                    <p className="text-xs font-medium text-gray-900">Orange Max it</p>
-                                    <p className="text-xs text-gray-600 mt-1">
-                                        Envoie de l'argent vers le Burkina ! Profite de frais réduits à 0,5% pour tes transferts vers le Burkina Faso. RDV dans "Transfert d'argent" pour en profiter !
-                                    </p>
-                                    <p className="text-xs text-gray-400 mt-1">08:45</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bg-white p-3 rounded-lg shadow-sm">
-                            <div className="flex items-start space-x-3">
-                                <Avatar className="h-8 w-8">
-                                    <AvatarFallback className="bg-orange-100 text-orange-600 text-xs">
-                                        O
-                                    </AvatarFallback>
-                                </Avatar>
-                                <div className="flex-1">
-                                    <p className="text-xs font-medium text-gray-900">Orange Max it</p>
-                                    <p className="text-xs text-gray-600 mt-1">
-                                        Envoie de l'argent vers le Burkina ! Profite de frais réduits à 0,5% pour tes transferts vers le Burkina Faso. RDV dans "Transfert d'argent" pour en profiter !
-                                    </p>
-                                    <p className="text-xs text-gray-400 mt-1">08:45</p>
-                                </div>
-                            </div>
-                        </div>
-                        <div className="bg-white p-3 rounded-lg shadow-sm">
-                            <div className="flex items-start space-x-3">
-                                <Avatar className="h-8 w-8">
-                                    <AvatarFallback className="bg-orange-100 text-orange-600 text-xs">
-                                        O
-                                    </AvatarFallback>
-                                </Avatar>
-                                <div className="flex-1">
-                                    <p className="text-xs font-medium text-gray-900">Orange Max it</p>
-                                    <p className="text-xs text-gray-600 mt-1">
-                                        Envoie de l'argent vers le Burkina ! Profite de frais réduits à 0,5% pour tes transferts vers le Burkina Faso. RDV dans "Transfert d'argent" pour en profiter !
-                                    </p>
-                                    <p className="text-xs text-gray-400 mt-1">08:45</p>
-                                </div>
-                            </div>
-                        </div>
-                    </div>
-
-                </motion.div>
+                <div className='max-h-full overflow-y-auto pr-2 scroll-hidden'>
+                    <NotificationComponent
+                    />
+                </div>
             </div>
 
             <div className="flex flex-col flex-1 max-h-screen overflow-y-auto ">

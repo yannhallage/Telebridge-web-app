@@ -39,7 +39,7 @@ import DiscussionsComponent from '@/components/pages/DiscussionsComponent';
 import CallComponent from '@/components/pages/CallComponent';
 import SelectChats from '@/components/pages/SelectChats';
 import NotificationComponent from '@/components/pages/notificationComponent';
-// import DiscussionsComponent from '@/components/pages/DiscussionsComponent';
+import ComponentAddContact from '@/components/comp-327';
 
 
 function MessagesPage() {
@@ -256,9 +256,11 @@ function MessagesPage() {
                             <Button
                                 variant="ghost"
                                 size="icon"
-                                onClick={() => handleFeatureClick('new-message')}
+                                // onClick={() => handleFeatureClick('new-message')}
                             >
-                                <Edit className="h-4 w-4 text-gray-600" />
+                                {/* <Edit className="h-4 w-4 text-gray-600" /> */}
+                                <ComponentAddContact 
+                                />
                             </Button>
                         </div>
                     </div>

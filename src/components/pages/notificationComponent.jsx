@@ -5,7 +5,6 @@ import { useNotifications } from "@/hooks/useNotifications";
 
 const NotificationComponent = () => {
     const { notifications } = useNotifications();
-
     return (
         <motion.div
             className="p-4 rounded-2xl  bg-gray-50 backdrop-blur-md shadow-lg border border-white/20"
@@ -26,14 +25,14 @@ const NotificationComponent = () => {
                 {notifications.map((item) => (
                     <motion.div
                         key={item.id}
-                        className="p-3 rounded-xl bg-white/40 backdrop-blur-md border border-white/20 shadow-sm flex items-start space-x-3"
+                        className="p-3 rounded-xl bg-white backdrop-blur-md border border-white/20 shadow-sm flex items-start space-x-3"
                         initial={{ opacity: 0, y: 10 }}
                         animate={{ opacity: 1, y: 0 }}
                         transition={{ duration: 0.2 }}
                     >
                         {/* Logo */}
                         <div className="flex-shrink-0">
-                            <Avatar className="h-10 w-10 ring-2 ring-white/40 shadow-md">
+                            <Avatar className="h-5 w-5 ring-2 ring-white/40 shadow-md">
                                 <AvatarFallback className="bg-gray-100">
                                     <img
                                         src={`data:image/png;base64,${item.logo}`}

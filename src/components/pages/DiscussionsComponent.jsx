@@ -99,7 +99,7 @@ const DiscussionsComponent = () => {
                             <div className="relative">
                                 <Avatar className="h-12 w-12">
                                     <AvatarImage src={conversation.avatar} />
-                                    <AvatarFallback className="bg-gray-200 text-gray-600">
+                                    <AvatarFallback className="bg-gray-300 text-white">
                                         {conversation.name.slice(0, 2)}
                                     </AvatarFallback>
                                 </Avatar>
@@ -109,7 +109,7 @@ const DiscussionsComponent = () => {
                             </div>
                             <div className="flex-1 min-w-0">
                                 <div className="flex items-center justify-between">
-                                    <p className="font-medium text-gray-900 truncate">
+                                    <p className="font-medium text-sm text-gray-900 truncate">
                                         {conversation.name}
                                     </p>
                                     <div className="flex items-center space-x-2">

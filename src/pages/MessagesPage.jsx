@@ -219,7 +219,7 @@ function MessagesPage() {
                 </div>
 
                 {/* Notifications */}
-                <div className='max-h-full overflow-y-auto pr-2 scroll-hidden'>
+                <div className='max-h-full w-full overflow-y-auto scroll-hidden'>
                     <NotificationComponent
                     />
                 </div>

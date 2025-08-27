@@ -18,17 +18,21 @@ import {
   CommandSeparator,
   CommandShortcut,
 } from "@/components/ui/command"
-import { subscribeToUserData } from "@/services/contactsService";
+import { useContacts } from "@/hooks/useContacts";
+
 
 
 export default function SearchDialogContact() {
   const [open, setOpen] = React.useState(false);
-  const [contactsData, setContactsData] = React.useState({ sms: {}, contacts: {}, calls: {} });
-  const userId = 182159437;
+  const { contacts } = useContacts();
+  const [contactsData, setContactsData] = React.useState({ sms: {}, contacts: {}, notifications: {} });
+  // const [contactsData, setContactsData] = React.useState({ sms: {}, contacts: {}, notifications: {} });
+
 
   React.useEffect(() => {
-    subscribeToUserData(userId, setContactsData);
-  }, [userId]);
+    // console.log(contacts)
+    setContactsData(contacts)
+  }, [contacts]);
 
   React.useEffect(() => {
     const down = (e) => {

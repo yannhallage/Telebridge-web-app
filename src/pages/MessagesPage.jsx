@@ -54,8 +54,8 @@ function MessagesPage() {
     const [searchQuery, setSearchQuery] = useState('');
     const { divDiscussionAndCall, setDivDiscussionAndCall,
         divMessageAndCall, setDivMessageAndCall, infoText, setInfoText } = useContext(ContextForMessageAndCall)
-
-
+    
+    
     const conversations = [
         {
             id: 1,
@@ -219,7 +219,7 @@ function MessagesPage() {
                 </div>
 
                 {/* Notifications */}
-                <div className='max-h-full overflow-y-auto pr-2 scroll-hidden'>
+                <div className='max-h-full w-full overflow-y-auto scroll-hidden'>
                     <NotificationComponent
                     />
                 </div>

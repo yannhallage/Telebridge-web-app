@@ -1,91 +1,165 @@
 "use client"
 
-import { Settings } from "lucide-react"
-
 import { useState } from "react"
-import { ArrowRightIcon } from "lucide-react"
-import { cn } from "../lib/utils"
+import { Settings, ChevronRight } from "lucide-react"
 import { Button } from "@/components/ui/button"
 import {
   Dialog,
-  DialogClose,
   DialogContent,
-  DialogDescription,
-  DialogFooter,
   DialogHeader,
   DialogTitle,
   DialogTrigger,
 } from "@/components/ui/dialog"
+import { Switch } from "@/components/ui/switch"
+import { Label } from "@/components/ui/label"
 
-export default function OnboardingDialog() {
-  const [step, setStep] = useState(1)
+const sections = [
+  { id: "general", label: "Général" },
+  { id: "notifications", label: "Notifications" },
+  { id: "personalization", label: "Personnalisation" },
+  { id: "apps", label: "Applications connectées" },
+  { id: "data", label: "Gestion des données" },
+  { id: "security", label: "Sécurité" },
+  { id: "account", label: "Compte" },
+]
 
-  const stepContent = [
-    { title: "Welcome", description: "Discover powerful components." },
-    { title: "Customizable Components", description: "Fully customizable." },
-    { title: "Ready to Start?", description: "Begin building interfaces." },
-    { title: "Get Support", description: "Access docs and community." },
-  ]
-
-  const totalSteps = stepContent.length
-
-  const handleContinue = () => {
-    if (step < totalSteps) setStep(step + 1)
-  }
+export default function SettingsDialog() {
+  const [active, setActive] = useState("general")
 
   return (
-    <Dialog onOpenChange={(open) => open && setStep(1)}>
+    <Dialog>
       <DialogTrigger asChild>
-        <span><Settings className="h-5 w-5 text-gray-600" /></span>
+        <Button variant="ghost" size="icon">
+          <Settings className="h-5 w-5 text-gray-600" />
+        </Button>
       </DialogTrigger>
-      <DialogContent className="max-w-md w-full p-0 gap-0 [&>button:last-child]:text-white">
-        <div className="p-2">
-          <img
-            className="w-full rounded-md"
-            src="https://cdn-dynmedia-1.microsoft.com/is/image/microsoftcorp/MSFT-Phone-Link-window-with-notifications-RW10JU0?scl=1"
-            width={382}
-            height={216}
-            alt="dialog"
-          />
-        </div>
-        <div className="space-y-6 px-6 pt-3 pb-6">
-          <DialogHeader>
-            <DialogTitle>{stepContent[step - 1].title}</DialogTitle>
-            <DialogDescription>
-              {stepContent[step - 1].description}
-            </DialogDescription>
-          </DialogHeader>
-
-          <div className="flex flex-col justify-between gap-4 sm:flex-row sm:items-center">
-            <div className="flex justify-center space-x-1.5 max-sm:order-1">
-              {[...Array(totalSteps)].map((_, index) => (
-                <div
-                  key={index}
-                  className={cn(
-                    "rounded-full h-2 w-2",
-                    index + 1 === step ? "bg-primary" : "bg-primary/20"
-                  )}
-                />
+      <DialogContent className="max-w-4xl w-[690px] p-0 overflow-hidden">
+        <div className="flex h-[550px]">
+          {/* Sidebar */}
+          <div className="w-64 bg-gray-50 border-r">
+            <div className="p-4 font-semibold text-lg">Paramètres</div>
+            <nav className="flex flex-col">
+              {sections.map((s) => (
+                <button
+                  key={s.id}
+                  onClick={() => setActive(s.id)}
+                  className={`flex items-center justify-between px-4 py-2 text-left hover:bg-gray-100 ${active === s.id ? "bg-gray-200 font-medium" : ""
+                    }`}
+                >
+                  {s.label}
+                  <ChevronRight size={16} className="text-gray-400" />
+                </button>
               ))}
-            </div>
-            <DialogFooter className="flex gap-2">
-              <DialogClose asChild>
-                <Button variant="ghost">Skip</Button>
-              </DialogClose>
-              {step < totalSteps ? (
-                <Button type="button" onClick={handleContinue} className={'bg-[#0067b8]'}>
-                  Next
-                  <ArrowRightIcon
-                    className="-me-1 opacity-60 transition-transform group-hover:translate-x-0.5"
-                    size={16}
-                  />
+            </nav>
+          </div>
+
+          {/* Contenu */}
+          <div className="flex-1 p-6 space-y-6 overflow-y-auto">
+            <DialogHeader>
+              <DialogTitle className="text-2xl font-semibold capitalize">
+                {sections.find((s) => s.id === active)?.label}
+              </DialogTitle>
+            </DialogHeader>
+
+            {/* Général */}
+            {active === "general" && (
+              <div className="space-y-4">
+                <div>
+                  <Label>Langue</Label>
+                  <select className="border rounded p-2 mt-1">
+                    <option>Français</option>
+                    <option>Anglais</option>
+                    <option>Espagnol</option>
+                  </select>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Switch id="theme" />
+                  <Label htmlFor="theme">Mode sombre</Label>
+                </div>
+              </div>
+            )}
+
+            {/* Notifications */}
+            {active === "notifications" && (
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Switch id="notif-email" />
+                  <Label htmlFor="notif-email">Notifications par e-mail</Label>
+                </div>
+                <div className="flex items-center space-x-2">
+                  <Switch id="notif-push" />
+                  <Label htmlFor="notif-push">Notifications push</Label>
+                </div>
+              </div>
+            )}
+
+            {/* Personnalisation */}
+            {active === "personalization" && (
+              <div>
+                <Label>Couleur principale</Label>
+                <input type="color" className="ml-2 w-10 h-10 rounded" />
+              </div>
+            )}
+
+            {/* Applications connectées */}
+            {active === "apps" && (
+              <div>
+                <p className="text-sm text-gray-600 mb-2">
+                  Gérez les applications ayant accès à votre compte.
+                </p>
+                <ul className="list-disc pl-5 space-y-2">
+                  <li>Google Drive (actif)</li>
+                  <li>Microsoft OneDrive (actif)</li>
+                  <li>Slack (désactivé)</li>
+                </ul>
+              </div>
+            )}
+
+            {/* Gestion des données */}
+            {active === "data" && (
+              <div>
+                <p className="text-sm text-gray-600 mb-4">
+                  Exportez ou supprimez vos données personnelles.
+                </p>
+                <Button>Exporter mes données</Button>
+                <Button variant="destructive" className="ml-3">
+                  Supprimer mon compte
                 </Button>
-              ) : (
-                <DialogClose asChild>
-                  <Button type="button" className={'bg-[#0067b8]'}>Okay</Button>
-                </DialogClose>
-              )}
-            </DialogFooter>
+              </div>
+            )}
+
+            {/* Sécurité */}
+            {active === "security" && (
+              <div className="space-y-4">
+                <div className="flex items-center space-x-2">
+                  <Switch id="2fa" />
+                  <Label htmlFor="2fa">Activer l’authentification à deux facteurs</Label>
+                </div>
+                <div>
+                  <Label>Changer le mot de passe</Label>
+                  <input
+                    type="password"
+                    className="border rounded p-2 mt-1 block w-1/2"
+                    placeholder="Nouveau mot de passe"
+                  />
+                </div>
+              </div>
+            )}
+
+            {/* Compte */}
+            {active === "account" && (
+              <div>
+                <Label>Nom d’utilisateur</Label>
+                <input
+                  type="text"
+                  defaultValue="yannhallage"
+                  className="border rounded p-2 mt-1 block w-1/2"
+                />
+                <div className="mt-4">
+                  <Button variant="destructive">Supprimer le compte</Button>
+                </div>
+              </div>
+            )}
           </div>
         </div>
       </DialogContent>

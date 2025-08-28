@@ -9,6 +9,7 @@ import { Separator } from '../components/ui/separator';
 
 import { MessageCircle, Smartphone, Settings, Link, QrCode, Download, HelpCircle, MonitorSmartphone } from 'lucide-react';
 import { useToast } from '../components/ui/use-toast';
+import { useAuth } from "@/context/AuthContext";
 import AccordionFromOrigin from '../components/comp-335';
 import OnboardingDialogForLogin from '@/components/pages/OnboardLogin';
 
@@ -41,7 +42,7 @@ function LoginPage() {
     };
 
     const handleGetStarted = () => {
-        navigate('/messages')
+        navigate('/web')
         // toast({
         //     title: "🚧 Cette fonctionnalité n'est pas encore implémentée—mais ne vous inquiétez pas ! Vous pouvez la demander dans votre prochaine requête ! 🚀"
         // });
@@ -244,8 +245,8 @@ function LoginPage() {
                 </div>
             </div>
 
-            {/*  App Section */}
-            <div className="bg-gray-50 py-12">
+            {/*      App Section */}
+            <div className="bg-gray-50 py-12">  
                 <div className="max-w-4xl mx-auto px-6">
                     <motion.div
                         initial={{ opacity: 0, y: 20 }}

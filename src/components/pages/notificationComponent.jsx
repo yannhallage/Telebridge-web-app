@@ -5,6 +5,7 @@ import { useNotifications } from "@/hooks/useNotifications";
 
 const NotificationComponent = () => {
     const { notifications } = useNotifications();
+
     return (
         <motion.div
             className="p-4 rounded-2xl  bg-gray-50 backdrop-blur-md shadow-lg border border-white/20"
@@ -32,7 +33,7 @@ const NotificationComponent = () => {
                     >
                         {/* Logo */}
                         <div className="flex-shrink-0">
-                            <Avatar className="h-5 w-5 ring-2 ring-white/40 shadow-md">
+                            <Avatar className="h-10 w-10 ring-2 ring-white/40 shadow-md">
                                 <AvatarFallback className="bg-gray-100">
                                     <img
                                         src={`data:image/png;base64,${item.logo}`}

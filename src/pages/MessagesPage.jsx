@@ -54,8 +54,8 @@ function MessagesPage() {
     const [searchQuery, setSearchQuery] = useState('');
     const { divDiscussionAndCall, setDivDiscussionAndCall,
         divMessageAndCall, setDivMessageAndCall, infoText, setInfoText } = useContext(ContextForMessageAndCall)
-
-
+    
+    
     const conversations = [
         {
             id: 1,

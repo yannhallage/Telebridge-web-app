@@ -258,9 +258,9 @@ function MessagesPage() {
                                 size="icon"
                                 // onClick={() => handleFeatureClick('new-message')}
                             >
-                                {/* <Edit className="h-4 w-4 text-gray-600" /> */}
-                                <ComponentAddContact 
-                                />
+                                <Edit className="h-4 w-4 text-gray-600" />
+                                {/* <ComponentAddContact 
+                                /> */}
                             </Button>
                         </div>
                     </div>
